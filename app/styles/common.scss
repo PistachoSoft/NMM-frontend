@@ -1,0 +1,129 @@
+html, body, #app {
+  height: 100%;
+  width: 100%;
+  min-width: $min-size;
+  padding: 0;
+  margin: 0;
+  font-family: $font-main;
+  font-size: #{$font-size}px;
+  background: $background-color;
+
+  @media (max-width: $responsive-limit-small) {
+    font-size: #{$font-size-responsive}px;
+  }
+}
+
+.view {
+  height: 100%;
+  width: 100%;
+}
+
+input {
+  background: $plain-white;
+  color: $color;
+  position: relative;
+  box-sizing: border-box;
+  border: $border-size-thick solid transparent;
+  border-left: $border-size-thick solid $color;
+  border-radius: 0;
+  outline: none;
+  height: $input-height;
+  width: $input-width;
+  padding: $padding-small;
+  margin: $margin-small;
+  font-family: $font-main;
+  font-size: $text-size;
+  line-height: $text-size;
+  transition: all .25s ease-in-out;
+
+  &:focus {
+    border: $border-size-thick solid $base-blue !important;
+  }
+
+  &:hover {
+    border: $border-size-thick solid $base-gray;
+    border-left: $border-size-thick solid $color;
+  }
+
+  &:-webkit-autofill {
+    background-color: $background-color !important;
+  }
+
+  &::-ms-clear {
+    display: none;
+  }
+}
+
+.button {
+  background: $base-blue;
+  color: $plain-white;
+  box-sizing: border-box;
+  border: $border-size-thick solid $base-blue;
+  display: block;
+  height: $button-height;
+  width: $button-width;
+  padding: $padding-small;
+  margin: $margin-small;
+  font-size: $text-size;
+  line-height: $text-size;
+  text-decoration: none;
+  text-align: center;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    background: lighten($base-blue, 4);
+    cursor: pointer;
+  }
+
+  .active {
+
+  }
+}
+
+.form-block {
+  box-sizing: border-box;
+  background: $plain-white;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  padding: $padding-large;
+  border: $border-size-thick solid $base-gray;
+}
+
+.list {
+  .list-item {
+    background: $plain-white;
+    box-sizing: border-box;
+    width: 100%;
+    height: $text-size + 2 * $padding-large;
+    padding: $padding-large;
+    margin-bottom: $margin-small;
+    transition: all .25s ease-in-out;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: normal;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:hover {
+      background: $base-gray;
+    }
+  }
+}
+
+.grid {
+  margin: 0 auto;
+  text-align: left;
+  list-style-type: none;
+  padding: 0;
+
+  .grid-item {
+    padding: 0;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+  }
+}

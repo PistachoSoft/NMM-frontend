@@ -1,0 +1,9 @@
+.player {
+  height: $player-height;
+  background: $plain-white;
+  border-top: $border-size-thick solid $base-gray;
+  padding: 0 $padding-small;
+  line-height: $player-height;
+  position: relative;
+  box-sizing: border-box;
+}

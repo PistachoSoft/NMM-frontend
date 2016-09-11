@@ -1,0 +1,26 @@
+.login {
+  position: relative;
+
+  .form-block {
+    height: $text-size + 2 * $input-height + $button-height +
+      2 * $padding-large + 6 * $margin-small;
+    width: 20em;
+
+    @media (max-width: $responsive-limit-small) {
+      width: calc(100% - 2 * #{$padding-large});
+    }
+
+    .login-logo {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .login-buttons {
+      display: flex;
+
+      .button {
+        width: 50%;
+      }
+    }
+  }
+}

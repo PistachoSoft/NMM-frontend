@@ -1,0 +1,35 @@
+.albums {
+  box-sizing: border-box;
+  padding: $padding-small;
+
+  .grid-item {
+    width: 10em;
+
+    @media (max-width: $responsive-limit-small) {
+      width: 50%;
+    }
+
+    .album-preview {
+      box-sizing: border-box;
+      margin: $margin-small;
+      padding: $padding-small;
+      background: $plain-white;
+
+      .album-cover, .album-cover-image {
+        width: 100%;
+        height: auto;
+      }
+
+      .album-link {
+        display: block;
+        text-decoration: none;
+        text-align: center;
+        margin-top: $margin-small;
+
+        &:visited {
+          color: inherit;
+        }
+      }
+    }
+  }
+}

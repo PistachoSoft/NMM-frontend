@@ -1,0 +1,38 @@
+// fonts
+$font-main: Questrial, Arial, "sans-serif";
+$font-size: 16;
+$font-size-responsive: 20;
+
+// limits
+$min-size: 320px;
+$responsive-limit-small: 480px;
+
+// texts
+$text-size: 1em;
+$title-size: 2em;
+
+// borders
+$border-size-normal: em(1, $font-size);
+$border-size-thick: em(2, $font-size);
+
+// paddings
+$padding-small: em(5, $font-size);
+$padding-large: 1em;
+
+// margins
+$margin-small: em(5, $font-size);
+$margin-large: 1em;
+
+// inputs
+$input-height: $text-size + 2 * $padding-small + 2 * $border-size-thick;
+$input-width: calc(100% - #{2 * $margin-small});
+
+// buttons
+$button-height: $text-size + 2 * $padding-small + 2 * $border-size-thick;
+$button-width: calc(100% - #{2 * $margin-small});
+
+// navbar
+$navbar-height: $title-size + 2 * $padding-small;
+
+// player
+$player-height: $title-size + 2 * $padding-small;

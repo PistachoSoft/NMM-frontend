@@ -12,6 +12,9 @@ module.exports = {
       {
         test: /\.tsx?$/,
         loader: 'ts-loader'
+      }, {
+        test: /\.s[a|c]ss$/,
+        loader: 'style!css!sass'
       }
     ]
   },

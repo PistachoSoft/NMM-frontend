@@ -1,7 +1,7 @@
 {
-  "name": "application-name",
+  "name": "nmm-frontend",
   "version": "1.0.0",
-  "description": "Sample app",
+  "description": "NMM Frontend",
   "license": "UNLICENSED",
   "dependencies": {
     "lodash": "4.15.0",
@@ -10,7 +10,33 @@
     "react-router": "2.8.0"
   },
   "devDependencies": {
+    "chai": "3.5.0",
+    "css-loader": "0.25.0",
+    "file-loader": "0.9.0",
+    "istanbul-instrumenter-loader": "0.2.0",
+    "karma": "1.3.0",
+    "karma-chai": "0.1.0",
+    "karma-chai-sinon": "0.1.5",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-coverage": "1.1.1",
+    "karma-junit-reporter": "1.1.0",
+    "karma-mocha": "1.1.1",
+    "karma-phantomjs-launcher": "1.0.2",
+    "karma-sinon": "1.0.5",
+    "karma-source-map-support": "1.2.0",
+    "karma-spec-reporter": "0.0.26",
+    "karma-typescript-preprocessor2": "1.2.1",
+    "karma-webpack": "1.8.0",
+    "mocha": "3.0.2",
+    "node-sass": "3.9.3",
+    "phantomjs-prebuilt": "2.1.12",
+    "remap-istanbul": "0.6.4",
+    "rimraf": "2.5.4",
+    "sass-loader": "4.0.2",
+    "sinon": "1.17.5",
+    "sinon-chai": "2.8.0",
     "source-map-loader": "0.1.5",
+    "style-loader": "0.13.1",
     "ts-loader": "0.8.2",
     "typescript": "1.8.10",
     "typings": "1.3.3",
@@ -18,7 +44,15 @@
     "webpack-dev-server": "1.15.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base . --history-api-fallback",
-    "build": "./node_modules/.bin/webpack"
+    "start": "webpack-dev-server --inline --content-base . --history-api-fallback --host 0.0.0.0",
+    "build": "webpack",
+    "clean": "rimraf tmp && rimraf dist && rimraf test/results",
+    "test": "npm run clean && npm run test:unit && npm run test:cov",
+    "test:unit": "karma start test/config/karma.unit.conf.js",
+    "test:cov": "karma start test/config/karma.cov.conf.js && npm run istanbul:remap",
+    "test:func": "echo 'No functional test yet'",
+    "istanbul:remap": "npm run istanbul:remap:html && npm run istanbul:remap:lcov",
+    "istanbul:remap:html": "remap-istanbul -i test/results/coverage/karma-coverage/json/coverage.json -o test/results/coverage/istanbul-remap/html -t html -e test",
+    "istanbul:remap:lcov": "remap-istanbul -i test/results/coverage/karma-coverage/json/coverage.json -o test/results/coverage/istanbul-remap/lcov/lcov.info -t lcovonly -e test"
   }
 }

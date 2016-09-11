@@ -1,0 +1,25 @@
+.album {
+  padding: $padding-small;
+  box-sizing: border-box;
+
+  .album-info-large {
+    display: flex;
+    background: $plain-white;
+    padding: $padding-small;
+    margin-bottom: $margin-small;
+
+    .album-cover, .album-cover-image {
+      width: 5em;
+      height: 5em;
+    }
+
+    .album-details {
+      padding: 0 $padding-small;
+    }
+  }
+
+  .songs {
+    padding: 0;
+    margin-top: $margin-large;
+  }
+}

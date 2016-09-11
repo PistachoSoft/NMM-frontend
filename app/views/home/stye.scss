@@ -1,0 +1,73 @@
+$section-height: $text-size + 2 * $padding-large;
+
+.home {
+  .home-explorer {
+    height: calc(100% - #{$navbar-height} - #{$player-height});
+    display: flex;
+
+    @media (max-width: $responsive-limit-small) {
+      display: block;
+    }
+
+    .sections {
+      width: 10em;
+      background: $plain-white;
+      border-right: $border-size-thick solid $base-gray;
+
+      @media (max-width: $responsive-limit-small) {
+        width: 100%;
+        display: flex;
+        border-right: none;
+        border-bottom: $border-size-thick solid $base-gray;
+      }
+
+      .section {
+        color: $plain-black;
+
+        @media (max-width: $responsive-limit-small) {
+          width: 100%;
+          text-align: center;
+        }
+
+        .section-link {
+          background: $plain-white;
+          display: block;
+          padding: $padding-large;
+          text-decoration: none;
+          transition: all .25s ease-in-out;
+
+          &:visited {
+            color: inherit;
+          }
+
+          &:hover {
+            background: $base-gray;
+          }
+
+          &:active {
+            color: inherit;
+          }
+
+          &:focus {
+            color: inherit;
+          }
+
+          &.active {
+            background: $base-gray;
+          }
+        }
+      }
+    }
+
+    .browser {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+
+      @media (max-width: $responsive-limit-small) {
+        height: calc(100% - #{$section-height});
+        display: flex;
+      }
+    }
+  }
+}

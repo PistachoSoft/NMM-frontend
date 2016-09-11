@@ -2,9 +2,9 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es5",
-    "sourceMap": true,
+    "sourceMap": false,
+    "inlineSourceMap": true,
     "outDir": "dist",
-    "rootDir": ".",
     "declaration": true,
     "jsx": "react"
   },

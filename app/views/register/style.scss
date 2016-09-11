@@ -1,0 +1,19 @@
+.register {
+  position: relative;
+
+  @media (max-width: $responsive-limit-small) {
+    background-color: $plain-white;
+  }
+
+  .form-block {
+    height: $text-size + $button-height + 2 * $padding-large +
+      2 * $margin-small;
+    width: 20em;
+    text-align: center;
+    border: none;
+
+    @media (max-width: $responsive-limit-small) {
+      width: 100%;
+    }
+  }
+}

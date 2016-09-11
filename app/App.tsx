@@ -1,13 +1,19 @@
 import * as React from 'react';
-import {Router, Route, IndexRedirect, browserHistory} from 'react-router';
-import Login from './views/Login';
-import Home from './views/Home';
-import Register from './views/Register';
-import Artists from './views/Artists';
-import Artist from './views/Artist';
-import Albums from './views/Albums';
-import Album from './views/Album';
-import Songs from './views/Songs';
+import {
+  Router,
+  Route,
+  RouterState,
+  IndexRedirect,
+  browserHistory
+} from 'react-router';
+import Login from './views/login/Login';
+import Home from './views/home/Home';
+import Register from './views/register/Register';
+import Artists from './views/artists/Artists';
+import Artist from './views/artist/Artist';
+import Albums from './views/albums/Albums';
+import Album from './views/album/Album';
+import Songs from './views/songs/Songs';
 import AuthService from './services/AuthService';
 
 export default class App extends React.Component<{}, {}> {
@@ -19,7 +25,7 @@ export default class App extends React.Component<{}, {}> {
     return AuthService.isAuth() ? '/home' : '/login';
   }
 
-  requireAuth(next, replace) {
+  requireAuth(next: RouterState, replace: Function) {
     if (!AuthService.isAuth()) {
       replace({
         pathname: '/',

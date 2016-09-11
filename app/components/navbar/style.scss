@@ -1,0 +1,30 @@
+.navbar {
+  height: $navbar-height;
+  background: $plain-white;
+  border-bottom: $border-size-thick solid $base-gray;
+  padding: 0 $padding-small;
+  line-height: $navbar-height;
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+
+  .navbar-logo {
+    font-size: $title-size;
+    cursor: default;
+  }
+
+  .navbar-items {
+    position: absolute;
+    right: 0;
+    display: flex;
+    line-height: $navbar-height;
+
+    .navbar-item {
+      float: left;
+
+      &.button {
+        width: 100px;
+      }
+    }
+  }
+}

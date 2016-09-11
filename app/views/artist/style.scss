@@ -1,0 +1,39 @@
+.artist {
+  padding: $padding-small;
+  box-sizing: border-box;
+
+  .artist-info-large {
+    display: flex;
+    background: $plain-white;
+    padding: $padding-small;
+    margin-bottom: $margin-small;
+
+    .artist-cover, .artist-cover-image {
+      width: 5em;
+      height: 5em;
+    }
+
+    .artist-details {
+      padding: 0 $padding-small;
+    }
+  }
+
+  .albums {
+    padding: 0;
+    margin-top: $margin-large;
+
+    .album-link {
+      display: block;
+      text-decoration: none;
+
+      &:visited {
+        color: inherit;
+      }
+    }
+  }
+
+  .songs {
+    padding: 0;
+    margin-top: $margin-large;
+  }
+}
