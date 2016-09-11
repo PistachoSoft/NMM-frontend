@@ -4,7 +4,7 @@ import AuthService from '../../services/AuthService';
 
 export default class Navbar extends React.Component<{}, {}> {
   logout() {
-    AuthService.setAuth(false);
+    AuthService.removeAuth();
   }
 
   render() {

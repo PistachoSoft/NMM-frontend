@@ -1,45 +1,43 @@
 import * as React from 'react';
+import {Song} from '../../models/Song';
+import {SongsResponse} from '../../models/responses/SongsResponse';
+import MusicService from '../../services/MusicService';
 
-export default class Songs extends React.Component<{}, {}> {
+export interface ISongsState {
+  songs: Array<Song>
+}
+
+export default class Songs extends React.Component<{}, ISongsState> {
+  constructor() {
+    super();
+
+    this.state = {
+      songs: []
+    };
+  }
+
+  componentWillMount() {
+    MusicService.getAllSongs()
+    .then(({songs}: SongsResponse) => {
+      this.setState({
+        songs
+      });
+    });
+  }
+
   render() {
     return (
       <div className="view list songs">
-        <div className="list-item song">
-          1. Road of Resistance.
-        </div>
-        <div className="list-item song">
-          2. Karate.
-        </div>
-        <div className="list-item song">
-          3. Awadama Fever.
-        </div>
-        <div className="list-item song">
-          4. Yava!
-        </div>
-        <div className="list-item song">
-          5. Amore.
-        </div>
-        <div className="list-item song">
-          6. Meta Taro.
-        </div>
-        <div className="list-item song">
-          7. Syncopation.
-        </div>
-        <div className="list-item song">
-          8. GJ!
-        </div>
-        <div className="list-item song">
-          9. Sis. Anger.
-        </div>
-        <div className="list-item song">
-          10. No Rain, No Rainbow.
-        </div>
-        <div className="list-item song">
-          11. Tales of the Destinies.
-        </div>
-        <div className="list-item song">
-          12. The One.
-        </div>
+        {this.state.songs.map(this.renderSong)}
+      </div>
+    );
+  }
+
+  renderSong(song: Song) {
+    return (
+      <div className="list-item song"
+          key={song.id}>
+        {song.id}. {song.name}
       </div>
     );
   }

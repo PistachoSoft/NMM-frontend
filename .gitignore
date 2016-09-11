@@ -3,3 +3,4 @@ typings
 dist
 .idea
 test/results
+npm-debug.log*

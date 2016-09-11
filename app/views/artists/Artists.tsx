@@ -1,22 +1,52 @@
 import * as React from 'react';
 import {Link} from 'react-router';
-import GridView from '../../components/GridView';
+import {Artist} from '../../models/Artist';
+import {ArtistsResponse} from '../../models/responses/ArtistsResponse';
+import MusicService from '../../services/MusicService';
 
-export default class Artists extends GridView {
+export interface IArtistsState {
+  artists: Array<Artist>
+}
+
+export default class Artists extends React.Component<{}, IArtistsState> {
+  constructor() {
+    super();
+
+    this.state = {
+      artists: []
+    };
+  }
+
+  componentWillMount() {
+    MusicService.getAllArtists()
+    .then(({artists}: ArtistsResponse) => {
+      this.setState({
+        artists
+      });
+    });
+  }
+
   render() {
     return (
       <div className="view grid artists">
-        <div className="grid-item">
-          <div className="artist-preview">
-            <div className="artist-cover">
-              <img src="https://upload.wikimedia.org/wikipedia/en/3/36/Babymetalcover.jpg" className="artist-cover-image"/>
-            </div>
-            <Link to="/home/artists/1"
-              activeClassName="active"
-              className="artist-link">
-              Babymetal
-            </Link>
+        {this.state.artists.map(this.renderArtist)}
+      </div>
+    );
+  }
+
+  renderArtist(artist: Artist) {
+    return (
+      <div className="grid-item"
+          key={artist.id}>
+        <div className="artist-preview">
+          <div className="artist-cover">
+            <img src={artist.image} className="artist-cover-image"/>
           </div>
+          <Link to={`/home/artists/${artist.id}`}
+            activeClassName="active"
+            className="artist-link">
+            {artist.name}
+          </Link>
         </div>
       </div>
     );
