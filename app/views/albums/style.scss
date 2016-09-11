@@ -21,13 +21,22 @@
       }
 
       .album-link {
+        color: $color;
         display: block;
         text-decoration: none;
         text-align: center;
         margin-top: $margin-small;
 
         &:visited {
-          color: inherit;
+          color: $color;
+        }
+
+        &:active {
+          color: $color;
+        }
+
+        &:focus {
+          color: $color;
         }
       }
     }

@@ -30,6 +30,7 @@ $section-height: $text-size + 2 * $padding-large;
         }
 
         .section-link {
+          color: $color;
           background: $plain-white;
           display: block;
           padding: $padding-large;
@@ -37,7 +38,7 @@ $section-height: $text-size + 2 * $padding-large;
           transition: all .25s ease-in-out;
 
           &:visited {
-            color: inherit;
+            color: $color;
           }
 
           &:hover {
@@ -45,11 +46,11 @@ $section-height: $text-size + 2 * $padding-large;
           }
 
           &:active {
-            color: inherit;
+            color: $color;
           }
 
           &:focus {
-            color: inherit;
+            color: $color;
           }
 
           &.active {
