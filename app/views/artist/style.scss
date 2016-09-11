@@ -3,7 +3,7 @@
   box-sizing: border-box;
 
   .artist-info-large {
-    display: flex;
+    @include flex;
     background: $plain-white;
     padding: $padding-small;
     margin-bottom: $margin-small;

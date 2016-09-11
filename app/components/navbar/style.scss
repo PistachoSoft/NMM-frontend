@@ -4,7 +4,7 @@
   border-bottom: $border-size-thick solid $base-gray;
   padding: 0 $padding-small;
   line-height: $navbar-height;
-  display: flex;
+  @include flex;
   position: relative;
   box-sizing: border-box;
 
@@ -16,7 +16,7 @@
   .navbar-items {
     position: absolute;
     right: 0;
-    display: flex;
+    @include flex;
     line-height: $navbar-height;
 
     .navbar-item {

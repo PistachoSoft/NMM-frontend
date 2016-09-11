@@ -1,3 +1,11 @@
 @function em($size, $base) {
   @return #{$size / $base}em;
 }
+
+@mixin flex {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}

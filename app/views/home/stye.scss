@@ -3,7 +3,7 @@ $section-height: $text-size + 2 * $padding-large;
 .home {
   .home-explorer {
     height: calc(100% - #{$navbar-height} - #{$player-height});
-    display: flex;
+    @include flex;
 
     @media (max-width: $responsive-limit-small) {
       display: block;
@@ -16,7 +16,7 @@ $section-height: $text-size + 2 * $padding-large;
 
       @media (max-width: $responsive-limit-small) {
         width: 100%;
-        display: flex;
+        @include flex;
         border-right: none;
         border-bottom: $border-size-thick solid $base-gray;
       }
@@ -67,7 +67,7 @@ $section-height: $text-size + 2 * $padding-large;
 
       @media (max-width: $responsive-limit-small) {
         height: calc(100% - #{$section-height});
-        display: flex;
+        @include flex;
       }
     }
   }

@@ -16,7 +16,7 @@
     }
 
     .login-buttons {
-      display: flex;
+      @include flex;
 
       .button {
         width: 50%;
