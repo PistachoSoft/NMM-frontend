@@ -1,5 +1,5 @@
-import {Song} from '../Song';
+import {SongModel} from '../SongModel';
 
 export interface SongsResponse {
-  songs: Array<Song>;
+  songs: Array<SongModel>;
 }

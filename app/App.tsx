@@ -6,14 +6,14 @@ import {
   IndexRedirect,
   browserHistory
 } from 'react-router';
-import Login from './views/login/Login';
-import Home from './views/home/Home';
-import Register from './views/register/Register';
-import Artists from './views/artists/Artists';
-import Artist from './views/artist/Artist';
-import Albums from './views/albums/Albums';
-import Album from './views/album/Album';
-import Songs from './views/songs/Songs';
+import LoginView from './views/login/LoginView';
+import HomeView from './views/home/HomeView';
+import RegisterView from './views/register/RegisterView';
+import ArtistsView from './views/artists/ArtistsView';
+import ArtistView from './views/artist/ArtistView';
+import AlbumsView from './views/albums/AlbumsView';
+import AlbumView from './views/album/AlbumView';
+import SongsView from './views/songs/SongsView';
 import AuthService from './services/AuthService';
 
 export default class App extends React.Component<{}, {}> {
@@ -39,15 +39,15 @@ export default class App extends React.Component<{}, {}> {
       <Router history={browserHistory}>
         <Route path="/">
           <IndexRedirect to={this.getFirstPage()} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/home" component={Home} onEnter={this.requireAuth}>
+          <Route path="/login" component={LoginView} />
+          <Route path="/register" component={RegisterView} />
+          <Route path="/home" component={HomeView} onEnter={this.requireAuth}>
             <IndexRedirect to="songs" />
-            <Route path="artists" component={Artists} />
-            <Route path="artists/:id" component={Artist} />
-            <Route path="albums" component={Albums} />
-            <Route path="albums/:id" component={Album} />
-            <Route path="songs" component={Songs} />
+            <Route path="artists" component={ArtistsView} />
+            <Route path="artists/:id" component={ArtistView} />
+            <Route path="albums" component={AlbumsView} />
+            <Route path="albums/:id" component={AlbumView} />
+            <Route path="songs" component={SongsView} />
           </Route>
         </Route>
       </Router>

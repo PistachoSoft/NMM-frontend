@@ -1,13 +1,14 @@
 import * as React from 'react';
-import {Song} from '../../models/Song';
+import {Song as SongModel} from '../../models/Song';
 import {SongsResponse} from '../../models/responses/SongsResponse';
 import MusicService from '../../services/MusicService';
+import Song from '../../components/song/Song';
 
 export interface ISongsState {
-  songs: Array<Song>
+  songs: Array<SongModel>
 }
 
-export default class Songs extends React.Component<{}, ISongsState> {
+export default class SongsView extends React.Component<{}, ISongsState> {
   constructor() {
     super();
 
@@ -28,16 +29,9 @@ export default class Songs extends React.Component<{}, ISongsState> {
   render() {
     return (
       <div className="view list songs">
-        {this.state.songs.map(this.renderSong)}
-      </div>
-    );
-  }
-
-  renderSong(song: Song) {
-    return (
-      <div className="list-item song"
-          key={song.id}>
-        {song.id}. {song.name}
+        {this.state.songs.map((song: SongModel) => {
+          return <Song className="list-item" model={song} key={song.id}/>;
+        })}
       </div>
     );
   }

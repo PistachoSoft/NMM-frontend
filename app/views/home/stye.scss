@@ -1,4 +1,5 @@
 $section-height: $text-size + 2 * $padding-large;
+$section-height-responsive: $text-size + 2 * $padding-medium;
 
 .home {
   .home-explorer {
@@ -37,6 +38,11 @@ $section-height: $text-size + 2 * $padding-large;
           text-decoration: none;
           transition: all .25s ease-in-out;
 
+          @media (max-width: $responsive-limit-small) {
+            padding-top: $padding-medium;
+            padding-bottom: $padding-medium;
+          }
+
           &:visited {
             color: $color;
           }
@@ -66,7 +72,7 @@ $section-height: $text-size + 2 * $padding-large;
       overflow: auto;
 
       @media (max-width: $responsive-limit-small) {
-        height: calc(100% - #{$section-height});
+        height: calc(100% - #{$section-height-responsive});
         @include flex;
       }
     }
