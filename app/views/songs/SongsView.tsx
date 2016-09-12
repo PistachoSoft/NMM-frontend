@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Song as SongModel} from '../../models/Song';
+import {SongModel} from '../../models/SongModel';
 import {SongsResponse} from '../../models/responses/SongsResponse';
 import MusicService from '../../services/MusicService';
 import Song from '../../components/song/Song';
