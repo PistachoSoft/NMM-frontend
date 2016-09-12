@@ -3,17 +3,18 @@ import {Link} from 'react-router';
 import MusicService from '../../services/MusicService';
 import {AlbumsResponse} from '../../models/responses/AlbumsResponse';
 import {SongsResponse} from '../../models/responses/SongsResponse';
-import {Album} from '../../models/Album';
-import {Song} from '../../models/Song';
-import {Artist as ArtistModel} from '../../models/Artist';
+import {AlbumModel} from '../../models/AlbumModel';
+import {SongModel} from '../../models/SongModel';
+import {ArtistModel} from '../../models/ArtistModel';
+import Song from '../../components/song/Song';
 
 export interface IArtistState {
   artist?: ArtistModel;
-  albums?: Array<Album>;
-  songs?: Array<Song>;
+  albums?: Array<AlbumModel>;
+  songs?: Array<SongModel>;
 }
 
-export default class Artist extends React.Component<{
+export default class ArtistView extends React.Component<{
   params: {
     id: string
   }
@@ -69,30 +70,22 @@ export default class Artist extends React.Component<{
           {this.state.albums.map(this.renderAlbum)}
         </div>
         <div className="view list songs">
-          {this.state.songs.map(this.renderSong)}
+          {this.state.songs.map((song: SongModel) => {
+            return <Song className="list-item" model={song} key={song.id}/>;
+          })}
         </div>
       </div>
     );
   }
 
-  private renderAlbum(album: Album) {
+  private renderAlbum(album: AlbumModel) {
     return (
       <div className="list-item"
           key={album.id}>
         <Link to={`/home/albums/${album.id}`}
-            activeClassName="active"
             className="album-link">
           {album.name}
         </Link>
-      </div>
-    );
-  }
-
-  private renderSong(song: Song) {
-    return (
-      <div className="list-item song"
-        key={song.id}>
-        {song.id}. {song.name}
       </div>
     );
   }

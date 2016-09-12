@@ -34,6 +34,7 @@ $section-height-responsive: $text-size + 2 * $padding-medium;
           color: $color;
           background: $plain-white;
           display: block;
+          padding: $padding-large;
           text-decoration: none;
           transition: all .25s ease-in-out;
 

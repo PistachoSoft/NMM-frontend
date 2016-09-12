@@ -1,5 +1,5 @@
-import {Album} from '../Album';
+import {AlbumModel} from '../AlbumModel';
 
 export interface AlbumsResponse {
-  albums: Array<Album>;
+  albums: Array<AlbumModel>;
 }

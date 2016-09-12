@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {Link} from 'react-router';
-import {Artist} from '../../models/Artist';
+import {ArtistModel} from '../../models/ArtistModel';
 import {ArtistsResponse} from '../../models/responses/ArtistsResponse';
 import MusicService from '../../services/MusicService';
 
 export interface IArtistsState {
-  artists: Array<Artist>
+  artists: Array<ArtistModel>
 }
 
-export default class Artists extends React.Component<{}, IArtistsState> {
+export default class ArtistsView extends React.Component<{}, IArtistsState> {
   constructor() {
     super();
 
@@ -34,7 +34,7 @@ export default class Artists extends React.Component<{}, IArtistsState> {
     );
   }
 
-  renderArtist(artist: Artist) {
+  private renderArtist(artist: ArtistModel) {
     return (
       <div className="grid-item"
           key={artist.id}>
@@ -43,7 +43,6 @@ export default class Artists extends React.Component<{}, IArtistsState> {
             <img src={artist.image} className="artist-cover-image"/>
           </div>
           <Link to={`/home/artists/${artist.id}`}
-            activeClassName="active"
             className="artist-link">
             {artist.name}
           </Link>

@@ -1,5 +1,5 @@
-import {Artist} from '../Artist';
+import {ArtistModel} from '../ArtistModel';
 
 export interface ArtistsResponse {
-  artists: Array<Artist>;
+  artists: Array<ArtistModel>;
 }

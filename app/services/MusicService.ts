@@ -3,8 +3,8 @@ import Repository from '../mocks/Repository';
 import {SongsResponse} from '../models/responses/SongsResponse';
 import {AlbumsResponse} from '../models/responses/AlbumsResponse';
 import {ArtistsResponse} from '../models/responses/ArtistsResponse';
-import {Artist} from '../models/Artist';
-import {Album} from '../models/Album';
+import {ArtistModel} from '../models/ArtistModel';
+import {AlbumModel} from '../models/AlbumModel';
 
 export default class MusicService {
   static getAllSongs(): Promise<SongsResponse> {
@@ -43,13 +43,13 @@ export default class MusicService {
     return Repository.findAllArtists();
   }
 
-  static getArtistById(id: number): Promise<Artist> {
+  static getArtistById(id: number): Promise<ArtistModel> {
     console.info('GET', `/artists/${id}`);
 
     return Repository.findArtistById(id);
   }
 
-  static getAlbumById(id: number): Promise<Album> {
+  static getAlbumById(id: number): Promise<AlbumModel> {
     console.info('GET', `/albums/${id}`);
 
     return Repository.findAlbumById(id);

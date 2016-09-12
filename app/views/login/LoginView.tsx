@@ -5,7 +5,7 @@ import LoginService from '../../services/LoginService';
 import {TokenResponse} from '../../models/responses/TokenResponse';
 import {ErrorResponse} from '../../models/responses/ErrorResponse';
 
-export default class Login extends React.Component<{}, {}> {
+export default class LoginView extends React.Component<{}, {}> {
   /**
    * Login View Handler
    *

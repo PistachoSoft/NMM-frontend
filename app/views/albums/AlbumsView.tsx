@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {Link} from 'react-router';
-import {Album} from '../../models/Album';
+import {AlbumModel} from '../../models/AlbumModel';
 import {AlbumsResponse} from '../../models/responses/AlbumsResponse';
 import MusicService from '../../services/MusicService';
 
 export interface IAlbumsState {
-  albums: Array<Album>
+  albums: Array<AlbumModel>
 }
 
-export default class Albums extends React.Component<{}, IAlbumsState> {
+export default class AlbumsView extends React.Component<{}, IAlbumsState> {
   constructor() {
     super();
 
@@ -34,7 +34,7 @@ export default class Albums extends React.Component<{}, IAlbumsState> {
     );
   }
 
-  private renderAlbum(album: Album) {
+  private renderAlbum(album: AlbumModel) {
     return (
       <div className="grid-item"
           key={album.id}>
@@ -43,7 +43,6 @@ export default class Albums extends React.Component<{}, IAlbumsState> {
             <img src={album.image} className="album-cover-image"/>
           </div>
           <Link to={`/home/albums/${album.id}`}
-              activeClassName="active"
               className="album-link">
             {album.name}
           </Link>

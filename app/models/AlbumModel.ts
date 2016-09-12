@@ -1,4 +1,4 @@
-export interface Album {
+export interface AlbumModel {
   id: number;
   name: string;
   image: string;

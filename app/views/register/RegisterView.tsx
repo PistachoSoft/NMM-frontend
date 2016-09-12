@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router';
 
-export default class Register extends React.Component<{}, {}> {
+export default class RegisterView extends React.Component<{}, {}> {
   render() {
     return (
       <div className="view register">
