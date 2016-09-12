@@ -1,10 +1,12 @@
 import * as React from 'react';
 import {SongModel} from '../../models/SongModel';
 
-export default class Song extends React.Component<{
+export interface ISongProps {
   model: SongModel;
   className: string;
-}, {}> {
+}
+
+export default class Song extends React.Component<ISongProps, {}> {
   render() {
     return (
       <div className={`${this.props.className} song`}>

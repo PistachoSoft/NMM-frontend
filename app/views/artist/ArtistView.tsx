@@ -8,17 +8,19 @@ import {SongModel} from '../../models/SongModel';
 import {ArtistModel} from '../../models/ArtistModel';
 import Song from '../../components/song/Song';
 
+export interface IArtistProps {
+  params: {
+    id: string;
+  };
+}
+
 export interface IArtistState {
   artist?: ArtistModel;
   albums?: Array<AlbumModel>;
   songs?: Array<SongModel>;
 }
 
-export default class ArtistView extends React.Component<{
-  params: {
-    id: string
-  }
-}, IArtistState> {
+export default class ArtistView extends React.Component<IArtistProps, IArtistState> {
   constructor() {
     super();
 

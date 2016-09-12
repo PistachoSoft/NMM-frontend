@@ -6,17 +6,19 @@ import {SongsResponse} from '../../models/responses/SongsResponse';
 import MusicService from '../../services/MusicService';
 import Song from '../../components/song/Song';
 
+export interface IAlbumProps {
+  params: {
+    id: string;
+  };
+}
+
 export interface IAlbumState {
   artist?: ArtistModel;
   album?: AlbumModel;
   songs?: Array<SongModel>;
 }
 
-export default class AlbumView extends React.Component<{
-  params: {
-    id: string
-  }
-}, IAlbumState> {
+export default class AlbumView extends React.Component<IAlbumProps, IAlbumState> {
   constructor() {
     super();
 
