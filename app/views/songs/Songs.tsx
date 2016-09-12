@@ -33,7 +33,7 @@ export default class Songs extends React.Component<{}, ISongsState> {
     );
   }
 
-  renderSong(song: Song) {
+  private renderSong(song: Song) {
     return (
       <div className="list-item song"
           key={song.id}>

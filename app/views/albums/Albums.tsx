@@ -34,7 +34,7 @@ export default class Albums extends React.Component<{}, IAlbumsState> {
     );
   }
 
-  renderAlbum(album: Album) {
+  private renderAlbum(album: Album) {
     return (
       <div className="grid-item"
           key={album.id}>
