@@ -22,13 +22,18 @@
     padding: 0;
     margin-top: $margin-large;
 
-    .album-link {
-      color: $color;
-      display: block;
-      text-decoration: none;
+    .album {
+      padding: 0;
 
-      &:visited {
-        color: inherit;
+      .album-link {
+        color: $color;
+        display: block;
+        padding: $padding-large;
+        text-decoration: none;
+
+        &:visited {
+          color: $color;
+        }
       }
     }
   }

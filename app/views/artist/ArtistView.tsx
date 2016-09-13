@@ -82,7 +82,7 @@ export default class ArtistView extends React.Component<IArtistProps, IArtistSta
 
   private renderAlbum(album: AlbumModel) {
     return (
-      <div className="list-item"
+      <div className="list-item album"
           key={album.id}>
         <Link to={`/home/albums/${album.id}`}
             className="album-link">
