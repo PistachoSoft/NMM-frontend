@@ -17,15 +17,15 @@ import SongsView from './views/songs/SongsView';
 import AuthService from './services/AuthService';
 
 export default class App extends React.Component<{}, {}> {
-  constructor() {
+  public constructor() {
     super();
   }
 
-  getFirstPage() {
+  public getFirstPage() {
     return AuthService.isAuth() ? '/home' : '/login';
   }
 
-  requireAuth(next: RouterState, replace: Function) {
+  public requireAuth(next: RouterState, replace: Function) {
     if (!AuthService.isAuth()) {
       replace({
         pathname: '/',
@@ -34,7 +34,7 @@ export default class App extends React.Component<{}, {}> {
     }
   }
 
-  render() {
+  public render() {
     return (
       <Router history={browserHistory}>
         <Route path="/">

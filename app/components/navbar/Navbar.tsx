@@ -3,11 +3,11 @@ import {Link} from 'react-router';
 import AuthService from '../../services/AuthService';
 
 export default class Navbar extends React.Component<{}, {}> {
-  logout() {
+  public logout() {
     AuthService.removeAuth();
   }
 
-  render() {
+  public render() {
     return (
       <div className="navbar">
         <div className="navbar-logo">

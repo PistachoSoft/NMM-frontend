@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export default class Player extends React.Component<{}, {}> {
-  render() {
+  public render() {
     return (
       <div className="player">
         Player

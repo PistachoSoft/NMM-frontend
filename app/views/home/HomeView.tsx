@@ -4,7 +4,7 @@ import Navbar from '../../components/navbar/Navbar';
 import Player from '../../components/player/Player';
 
 export default class Home extends React.Component<{}, {}> {
-  render() {
+  public render() {
     return (
       <div className="view home">
         <Navbar/>

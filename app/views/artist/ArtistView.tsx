@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Link} from 'react-router';
 import MusicService from '../../services/MusicService';
-import {AlbumsResponse} from '../../models/responses/AlbumsResponse';
-import {SongsResponse} from '../../models/responses/SongsResponse';
-import {AlbumModel} from '../../models/AlbumModel';
-import {SongModel} from '../../models/SongModel';
-import {ArtistModel} from '../../models/ArtistModel';
+import {IAlbumsResponse} from '../../models/responses/IAlbumsResponse';
+import {ISongsResponse} from '../../models/responses/ISongsResponse';
+import {IAlbumModel} from '../../models/IAlbumModel';
+import {ISongModel} from '../../models/ISongModel';
+import {IArtistModel} from '../../models/IArtistModel';
 import Song from '../../components/song/Song';
 
 export interface IArtistProps {
@@ -15,23 +15,35 @@ export interface IArtistProps {
 }
 
 export interface IArtistState {
-  artist?: ArtistModel;
-  albums?: Array<AlbumModel>;
-  songs?: Array<SongModel>;
+  artist?: IArtistModel;
+  albums?: Array<IAlbumModel>;
+  songs?: Array<ISongModel>;
 }
 
 export default class ArtistView extends React.Component<IArtistProps, IArtistState> {
-  constructor() {
+  public constructor() {
     super();
 
     this.state = {
-      artist: {} as ArtistModel,
+      artist: {} as IArtistModel,
       albums: [],
       songs: []
     };
   }
 
-  componentWillMount() {
+  private renderAlbum(album: IAlbumModel) {
+    return (
+      <div className="list-item album"
+        key={album.id}>
+        <Link to={`/home/albums/${album.id}`}
+          className="album-link">
+          {album.name}
+        </Link>
+      </div>
+    );
+  }
+
+  public componentWillMount() {
     const artistId = +this.props.params.id;
 
     MusicService.getArtistById(artistId)
@@ -42,21 +54,21 @@ export default class ArtistView extends React.Component<IArtistProps, IArtistSta
     });
 
     MusicService.getAlbumsByArtist(artistId)
-    .then(({albums}: AlbumsResponse) => {
+    .then(({albums}: IAlbumsResponse) => {
       this.setState({
         albums
       });
     });
 
     MusicService.getSongsByArtist(artistId)
-    .then(({songs}: SongsResponse) => {
+    .then(({songs}: ISongsResponse) => {
       this.setState({
         songs
       });
     });
   }
 
-  render() {
+  public render() {
     return (
       <div className="view artist">
         <div className="artist-info-large">
@@ -72,22 +84,10 @@ export default class ArtistView extends React.Component<IArtistProps, IArtistSta
           {this.state.albums.map(this.renderAlbum)}
         </div>
         <div className="view list songs">
-          {this.state.songs.map((song: SongModel) => {
+          {this.state.songs.map((song: ISongModel) => {
             return <Song className="list-item" model={song} key={song.id}/>;
           })}
         </div>
-      </div>
-    );
-  }
-
-  private renderAlbum(album: AlbumModel) {
-    return (
-      <div className="list-item album"
-          key={album.id}>
-        <Link to={`/home/albums/${album.id}`}
-            className="album-link">
-          {album.name}
-        </Link>
       </div>
     );
   }
