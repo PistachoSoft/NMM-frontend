@@ -2,6 +2,10 @@
   "name": "nmm-frontend",
   "version": "1.0.0",
   "description": "NMM Frontend",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PistachoSoft/NMM-frontend.git"
+  },
   "license": "UNLICENSED",
   "dependencies": {
     "es6-promise": "3.2.1",
@@ -45,16 +49,27 @@
     "webpack-dev-server": "1.15.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base . --history-api-fallback --host 0.0.0.0",
-    "build:dev": "webpack -w",
-    "build": "webpack",
-    "clean": "rimraf tmp && rimraf dist && rimraf test/results",
-    "test": "npm run clean && npm run test:unit && npm run test:cov",
+    "setup": "typings install",
+    "start": "npm run build:dev",
+    "clean": "npm run clean:tmp && npm run clean:dist && npm run clean:test",
+    "clean:dist": "rimraf dist",
+    "clean:test": "rimraf test/results",
+    "clean:tmp": "rimraf tmp",
+    "clean:tmp:test": "rimraf test/results/tmp",
+    "build": "npm run build:ts && npm run build:umd",
+    "build:dev": "webpack-dev-server --inline --content-base . --history-api-fallback --host 0.0.0.0",
+    "build:min": "webpack -p",
+    "build:umd": "webpack",
+    "build:w": "webpack -w",
+    "build:ts": "tsc -p tsconfig.json",
+    "lint": "npm run lint:app && npm run lint:test",
+    "lint:app": "tslint --project tsconfig.json --type-check -c tslint.json",
+    "lint:test": "tslint -c tslint.json test/**/*.ts",
+    "test": "npm run clean && npm run test:unit && npm run test:coverage",
     "test:unit": "karma start test/config/karma.unit.conf.js",
-    "test:cov": "karma start test/config/karma.cov.conf.js && npm run istanbul:remap",
-    "test:func": "echo 'No functional test yet'",
+    "test:coverage": "karma start test/config/karma.coverage.conf.js && npm run istanbul:remap && npm run clean:tmp:test",
     "istanbul:remap": "npm run istanbul:remap:html && npm run istanbul:remap:lcov",
-    "istanbul:remap:html": "remap-istanbul -i test/results/coverage/karma-coverage/json/coverage.json -o test/results/coverage/istanbul-remap/html -t html -e test",
-    "istanbul:remap:lcov": "remap-istanbul -i test/results/coverage/karma-coverage/json/coverage.json -o test/results/coverage/istanbul-remap/lcov/lcov.info -t lcovonly -e test"
+    "istanbul:remap:html": "remap-istanbul -i test/results/tmp/json/coverage.json -o test/results/coverage/html -t html -e test",
+    "istanbul:remap:lcov": "remap-istanbul -i test/results/tmp/json/coverage.json -o test/results/coverage/lcov/lcov.info -t lcovonly -e test"
   }
 }

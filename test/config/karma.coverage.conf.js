@@ -1,23 +1,15 @@
-var baseConfig = require('./karma.conf');
-
-// Karma coverage configuration
 module.exports = function(config) {
-  baseConfig(config);
+  require('./karma.conf')(config);
 
   config.set({
     preprocessors: {
-      'test/**/*.spec.ts': ['webpack', 'coverage']
+      'test/specs/unit/**/*.spec.ts': ['webpack', 'coverage']
     },
-
     reporters: ['dots', 'coverage'],
-
     coverageReporter: {
-      dir: 'test/results/coverage/karma-coverage',
+      dir: 'test/results/tmp',
       reporters: [
         {
-          type: 'html',
-          subdir: 'html'
-        }, {
           type: 'json',
           subdir: 'json',
           file: 'coverage.json'
