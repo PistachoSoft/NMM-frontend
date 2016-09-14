@@ -1,12 +1,8 @@
-var baseConfig = require('../config/karma.conf');
-
-// Karma configuration
 module.exports = function(config) {
-  baseConfig(config);
+  require('./karma.conf')(config);
 
   config.set({
-    reporters: ['spec'],
-
+    reports: ['dots', 'junit'],
     junitReporter: {
       outputFile: 'test/results/unit/test-results.xml'
     }

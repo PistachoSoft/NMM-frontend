@@ -2,8 +2,8 @@ import * as React from 'react';
 import {Link, browserHistory} from 'react-router';
 import AuthService from '../../services/AuthService';
 import LoginService from '../../services/LoginService';
-import {TokenResponse} from '../../models/responses/TokenResponse';
-import {ErrorResponse} from '../../models/responses/ErrorResponse';
+import {ITokenResponse} from '../../models/responses/ITokenResponse';
+import {IErrorResponse} from '../../models/responses/IErrorResponse';
 
 export default class LoginView extends React.Component<{}, {}> {
   /**
@@ -11,22 +11,22 @@ export default class LoginView extends React.Component<{}, {}> {
    *
    * @param {Event} e - submit event.
    */
-  login(e: Event) {
+  public login(e: Event) {
     let user: HTMLInputElement = this.refs['user'] as HTMLInputElement,
       pass: HTMLInputElement = this.refs['pass'] as HTMLInputElement;
 
     e.preventDefault();
 
-    LoginService.login(user.value, pass.value).then((data: TokenResponse) => {
+    LoginService.login(user.value, pass.value).then((data: ITokenResponse) => {
       AuthService.setAuth(data.token);
 
       browserHistory.push('/home');
-    }).catch((data: ErrorResponse) => {
-      console.log(data.message);
+    }).catch((data: IErrorResponse) => {
+      // Oops
     });
   }
 
-  render() {
+  public render() {
     return (
       <div className="view login">
         <form className="form-block"

@@ -1,6 +1,4 @@
-var webpack = require('./webpack.config');
-
-webpack.entry = {};
+var webpack = require('./webpack.config.common');
 
 webpack.devtool = 'inline-source-map';
 

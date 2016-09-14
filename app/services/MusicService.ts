@@ -1,57 +1,41 @@
 import {Promise} from 'es6-promise';
 import Repository from '../mocks/Repository';
-import {SongsResponse} from '../models/responses/SongsResponse';
-import {AlbumsResponse} from '../models/responses/AlbumsResponse';
-import {ArtistsResponse} from '../models/responses/ArtistsResponse';
-import {ArtistModel} from '../models/ArtistModel';
-import {AlbumModel} from '../models/AlbumModel';
+import {ISongsResponse} from '../models/responses/ISongsResponse';
+import {IAlbumsResponse} from '../models/responses/IAlbumsResponse';
+import {IArtistsResponse} from '../models/responses/IArtistsResponse';
+import {IArtistModel} from '../models/IArtistModel';
+import {IAlbumModel} from '../models/IAlbumModel';
 
 export default class MusicService {
-  static getAllSongs(): Promise<SongsResponse> {
-    console.info('GET', '/songs');
-
+  public static getAllSongs(): Promise<ISongsResponse> {
     return Repository.findAllSongs();
   }
 
-  static getSongsByAlbum(albumId: number) {
-    console.info('GET', `/albums/${albumId}/songs`);
-
+  public static getSongsByAlbum(albumId: number) {
     return Repository.findSongsByAlbum(albumId);
   }
 
-  static getAllAlbums(): Promise<AlbumsResponse> {
-    console.info('GET', '/albums');
-
+  public static getAllAlbums(): Promise<IAlbumsResponse> {
     return Repository.findAllAlbums();
   }
 
-  static getAlbumsByArtist(artistId: number) {
-    console.info('GET', `/artists/${artistId}/albums`);
-
+  public static getAlbumsByArtist(artistId: number) {
     return Repository.findAlbumsByArtist(artistId);
   }
 
-  static getSongsByArtist(artistId: number) {
-    console.info('GET', `/artists/${artistId}/songs`);
-
+  public static getSongsByArtist(artistId: number) {
     return Repository.findSongsByArtist(artistId);
   }
 
-  static getAllArtists(): Promise<ArtistsResponse> {
-    console.info('GET', '/artists');
-
+  public static getAllArtists(): Promise<IArtistsResponse> {
     return Repository.findAllArtists();
   }
 
-  static getArtistById(id: number): Promise<ArtistModel> {
-    console.info('GET', `/artists/${id}`);
-
+  public static getArtistById(id: number): Promise<IArtistModel> {
     return Repository.findArtistById(id);
   }
 
-  static getAlbumById(id: number): Promise<AlbumModel> {
-    console.info('GET', `/albums/${id}`);
-
+  public static getAlbumById(id: number): Promise<IAlbumModel> {
     return Repository.findAlbumById(id);
   }
 }

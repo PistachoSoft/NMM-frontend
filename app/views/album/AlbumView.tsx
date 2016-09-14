@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {AlbumModel} from '../../models/AlbumModel';
-import {ArtistModel} from '../../models/ArtistModel';
-import {SongModel} from '../../models/SongModel';
-import {SongsResponse} from '../../models/responses/SongsResponse';
+import {IAlbumModel} from '../../models/IAlbumModel';
+import {IArtistModel} from '../../models/IArtistModel';
+import {ISongModel} from '../../models/ISongModel';
+import {ISongsResponse} from '../../models/responses/ISongsResponse';
 import MusicService from '../../services/MusicService';
 import Song from '../../components/song/Song';
 
@@ -13,23 +13,23 @@ export interface IAlbumProps {
 }
 
 export interface IAlbumState {
-  artist?: ArtistModel;
-  album?: AlbumModel;
-  songs?: Array<SongModel>;
+  artist?: IArtistModel;
+  album?: IAlbumModel;
+  songs?: Array<ISongModel>;
 }
 
 export default class AlbumView extends React.Component<IAlbumProps, IAlbumState> {
-  constructor() {
+  public constructor() {
     super();
 
     this.state = {
-      artist: {} as ArtistModel,
-      album: {} as AlbumModel,
+      artist: {} as IArtistModel,
+      album: {} as IAlbumModel,
       songs: []
     };
   }
 
-  componentWillMount() {
+  public componentWillMount() {
     const albumId = +this.props.params.id;
 
     MusicService.getAlbumById(albumId)
@@ -47,14 +47,14 @@ export default class AlbumView extends React.Component<IAlbumProps, IAlbumState>
     });
 
     MusicService.getSongsByAlbum(albumId)
-    .then(({songs}: SongsResponse) => {
+    .then(({songs}: ISongsResponse) => {
       this.setState({
         songs
       });
     });
   }
 
-  render() {
+  public render() {
     return (
       <div className="view album">
         <div className="album-info-large">
@@ -69,7 +69,7 @@ export default class AlbumView extends React.Component<IAlbumProps, IAlbumState>
           </div>
         </div>
         <div className="view list songs">
-          {this.state.songs.map((song: SongModel) => {
+          {this.state.songs.map((song: ISongModel) => {
             return <Song className="list-item" model={song} key={song.id}/>;
           })}
         </div>

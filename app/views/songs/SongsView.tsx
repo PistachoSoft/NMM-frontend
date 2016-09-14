@@ -1,15 +1,15 @@
 import * as React from 'react';
-import {SongModel} from '../../models/SongModel';
-import {SongsResponse} from '../../models/responses/SongsResponse';
+import {ISongModel} from '../../models/ISongModel';
+import {ISongsResponse} from '../../models/responses/ISongsResponse';
 import MusicService from '../../services/MusicService';
 import Song from '../../components/song/Song';
 
 export interface ISongsState {
-  songs: Array<SongModel>
+  songs: Array<ISongModel>;
 }
 
 export default class SongsView extends React.Component<{}, ISongsState> {
-  constructor() {
+  public constructor() {
     super();
 
     this.state = {
@@ -17,19 +17,19 @@ export default class SongsView extends React.Component<{}, ISongsState> {
     };
   }
 
-  componentWillMount() {
+  public componentWillMount() {
     MusicService.getAllSongs()
-    .then(({songs}: SongsResponse) => {
+    .then(({songs}: ISongsResponse) => {
       this.setState({
         songs
       });
     });
   }
 
-  render() {
+  public render() {
     return (
       <div className="view list songs">
-        {this.state.songs.map((song: SongModel) => {
+        {this.state.songs.map((song: ISongModel) => {
           return <Song className="list-item" model={song} key={song.id}/>;
         })}
       </div>

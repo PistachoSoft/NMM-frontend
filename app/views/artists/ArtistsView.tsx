@@ -1,15 +1,15 @@
 import * as React from 'react';
 import {Link} from 'react-router';
-import {ArtistModel} from '../../models/ArtistModel';
-import {ArtistsResponse} from '../../models/responses/ArtistsResponse';
+import {IArtistModel} from '../../models/IArtistModel';
+import {IArtistsResponse} from '../../models/responses/IArtistsResponse';
 import MusicService from '../../services/MusicService';
 
 export interface IArtistsState {
-  artists: Array<ArtistModel>
+  artists: Array<IArtistModel>;
 }
 
 export default class ArtistsView extends React.Component<{}, IArtistsState> {
-  constructor() {
+  public constructor() {
     super();
 
     this.state = {
@@ -17,27 +17,10 @@ export default class ArtistsView extends React.Component<{}, IArtistsState> {
     };
   }
 
-  componentWillMount() {
-    MusicService.getAllArtists()
-    .then(({artists}: ArtistsResponse) => {
-      this.setState({
-        artists
-      });
-    });
-  }
-
-  render() {
-    return (
-      <div className="view grid artists">
-        {this.state.artists.map(this.renderArtist)}
-      </div>
-    );
-  }
-
-  private renderArtist(artist: ArtistModel) {
+  private renderArtist(artist: IArtistModel) {
     return (
       <div className="grid-item"
-          key={artist.id}>
+        key={artist.id}>
         <div className="artist-preview">
           <div className="artist-cover">
             <img src={artist.image} className="artist-cover-image"/>
@@ -47,6 +30,23 @@ export default class ArtistsView extends React.Component<{}, IArtistsState> {
             {artist.name}
           </Link>
         </div>
+      </div>
+    );
+  }
+
+  public componentWillMount() {
+    MusicService.getAllArtists()
+    .then(({artists}: IArtistsResponse) => {
+      this.setState({
+        artists
+      });
+    });
+  }
+
+  public render() {
+    return (
+      <div className="view grid artists">
+        {this.state.artists.map(this.renderArtist)}
       </div>
     );
   }
