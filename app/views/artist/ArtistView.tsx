@@ -71,7 +71,7 @@ export default class ArtistView extends React.Component<IArtistProps, IArtistSta
         <div className="list albums">
           {this.state.albums.map(this.renderAlbum)}
         </div>
-        <div className="view list songs">
+        <div className="list songs">
           {this.state.songs.map((song: SongModel) => {
             return <Song className="list-item" model={song} key={song.id}/>;
           })}

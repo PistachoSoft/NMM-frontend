@@ -68,7 +68,7 @@ export default class AlbumView extends React.Component<IAlbumProps, IAlbumState>
             <div className="album-detail">{this.state.album.duration}</div>
           </div>
         </div>
-        <div className="view list songs">
+        <div className="list songs">
           {this.state.songs.map((song: SongModel) => {
             return <Song className="list-item" model={song} key={song.id}/>;
           })}
